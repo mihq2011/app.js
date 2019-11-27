@@ -69,6 +69,15 @@
                 <div class="clear"></div>
               </ul>
             </div>
+
+            <div class="app-section">
+              <div class="app-button" data-target="lists">Lists</div>
+              <div class="app-button" data-target="buttons">Buttons</div>
+              <div class="app-button" data-target="inputs">Inputs</div>
+              <div class="app-button" data-target="scroll">Scrolling</div>
+            </div>
+
+
         <div class="app-section">
           <div class="app-button" data-target="page2">Go to Page 2</div>
         </div>
@@ -161,14 +170,37 @@
 
 
       App.controller('home', function (page) {
-        setupPageColour (page); 
+        setupPageColour(page); 
 
       });
 
       App.controller('page2', function (page) {
-        setupPageColour (page);
+        setupPageColour(page);
 
       });
+
+      App.controller('lists', function (page) {
+        setupPageColour(page);
+
+      });
+
+      App.controller('buttons', function (page) {
+        setupPageColour(page);
+
+        $(page).find('.menu')
+					.on('click', function () {
+						App.dialog({
+							title        : 'This is a Dialog',
+							text         : 'Say stuff to the user and get them to respond',
+              doButton     : 'Do something',
+							okButton     : 'Submit',
+							cancelButton : 'Cancel'
+						}, function (choice) {
+							console.log(choice);
+						});
+					});
+			});
+
 
       try {
         App.restore();
